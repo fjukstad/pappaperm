@@ -33,7 +33,7 @@
 	export let stats;
 </script> 
 
-<h1> Stats: Bjørns Pappaperm</h1>
+<h1> Stats </h1>
 <h2> Har trilla {Math.floor(stats.totalTime/3600)} timer og
-{Math.floor((stats.totalTime%3600) / 60)} minutter. Dette fordelt på {Math.floor(stats.totalDistance/1000)} km</h2>
+{Math.floor((stats.totalTime%3600) / 60)} minutter fordelt på {Math.floor(stats.totalDistance/1000)} km</h2>
 
