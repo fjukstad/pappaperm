@@ -14,6 +14,8 @@
 				totalTime += time;
 				totalDistance += distance;
 		}
+//convert totaltime to hours, minutes, seconds
+
 		let stats = {
 					totalTime: totalTime,
 					totalDistance: totalDistance
@@ -31,6 +33,7 @@
 	export let stats;
 </script> 
 
-<h2> Total time : {stats.totalTime} seconds </h2>
-<h2> Total distance : {stats.totalDistance} meters </h2>
+<h1> Stats: Bjørns Pappaperm</h1>
+<h2> Har trilla {Math.floor(stats.totalTime/3600)} timer og
+{Math.floor((stats.totalTime%3600) / 60)} minutter. Dette fordelt på {Math.floor(stats.totalDistance/1000)} km</h2>
 
