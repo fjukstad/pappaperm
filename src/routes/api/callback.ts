@@ -40,7 +40,7 @@ export async function get({ query }) {
   return {
     headers: {
       'set-cookie': [
-        `jwt=${response.access_token}; Path=/; HttpOnly;`,
+        `access_token=${response.access_token}; Path=/; HttpOnly;`,
       ],
       Location: '/'
     },
