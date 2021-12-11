@@ -1,3 +1,3 @@
 # Pappaperm
 
-npm run dev -- --open
+[pappaperm.vercel.app](https://pappaperm.vercel.app)
