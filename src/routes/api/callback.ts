@@ -37,9 +37,16 @@ export async function get({ query }) {
 		};
 	}
 
+	// Cookie expires 5 hours from now
+	const expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 5);
+
 	return {
 		headers: {
-			'set-cookie': [`access_token=${response.access_token}; Path=/; HttpOnly;`],
+			'set-cookie': [
+				`access_token=${
+					response.access_token
+				}; Path=/; HttpOnly; expires='${expiresAt.toUTCString()}`
+			],
 			Location: '/'
 		},
 		status: 302
