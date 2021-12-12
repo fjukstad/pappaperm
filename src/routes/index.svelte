@@ -60,19 +60,22 @@
 	});
 </script>
 
-<h1>Stats</h1>
 <h2>
-	Har trilla {Math.floor(stats.totalTime / 3600)} timer og
-	{Math.floor((stats.totalTime % 3600) / 60)} minutter fordelt på {Math.ceil(
-		stats.totalDistance / 1000
-	)} km
+	Tid: {Math.floor(stats.totalTime / 3600)} timer og
+	{Math.floor((stats.totalTime % 3600) / 60)} minutter.
+</h2>
+<h2>
+	Distanse: {Math.ceil(stats.totalDistance / 1000)} km
 </h2>
 
-<div id="map" />
+<div class="h-full w-full">
+	<div id="map" />
+</div>
 
 <style>
 	#map {
-		height: 500px;
+		height: 100%;
 		width: 100%;
+		position: absolute;
 	}
 </style>
