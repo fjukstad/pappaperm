@@ -2,16 +2,21 @@
 <html lang="en">
 <head>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-
-
 	<meta charset="utf-8" />
 	<meta name="description" content="" />
 	<link rel="icon" href="/favicon.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script>
+		// On page load or when changing themes, best to add inline in `head` to avoid FOUC
+		if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+		document.documentElement.classList.add('dark')
+		} else {
+		document.documentElement.classList.remove('dark')
+		}
+	</script>
 	%svelte.head%
 </head>
-
-<body>
+<body class="dark:bg-gray-900 dark:text-gray-100">
 	<div id="svelte">%svelte.body%</div>
 </body>
 

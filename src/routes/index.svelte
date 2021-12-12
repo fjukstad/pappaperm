@@ -60,13 +60,31 @@
 	});
 </script>
 
-<h2>
-	Tid: {Math.floor(stats.totalTime / 3600)} timer og
-	{Math.floor((stats.totalTime % 3600) / 60)} minutter.
-</h2>
-<h2>
-	Distanse: {Math.ceil(stats.totalDistance / 1000)} km
-</h2>
+<div class="flex w-full justify-center">
+	<div class="w-1/2">
+		<table class="table-auto w-full">
+			<tbody class="divide-y divide-gray-300">
+				<tr>
+					<td>Turer</td>
+					<td class="text-right">
+						{activities.length}
+					</td>
+				</tr>
+				<tr>
+					<td>Tid</td>
+					<td class="text-right">
+						{Math.floor(stats.totalTime / 3600)} timer og
+						{Math.floor((stats.totalTime % 3600) / 60)} minutter
+					</td>
+				</tr>
+				<tr>
+					<td> Distanse</td>
+					<td class="text-right"> {Math.ceil(stats.totalDistance / 1000)} km</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
 
 <div class="h-full w-full">
 	<div id="map" />
