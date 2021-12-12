@@ -9,13 +9,12 @@ export async function get({ params, locals }) {
 		}
 	}).then((response) => response.json());
 
-	// remove all non walk activities
+	// remove all non walk activities since I use the Walking activity type
+	// for strolling/jogging.
 	for (let i = 0; i < activities.length; i++) {
 		const activity = activities[i];
 		if (activity.type != 'Walk') {
-			console.log('removing activity: ' + activity.name);
 			activities.splice(i, 1);
-			console.log(activities.length);
 		}
 	}
 

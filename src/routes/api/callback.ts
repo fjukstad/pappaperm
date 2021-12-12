@@ -6,9 +6,7 @@ const STRAVA_SCOPES = import.meta.env.VITE_STRAVA_SCOPES;
  * @type {import('@sveltejs/kit').RequestHandler}
  */
 export async function get({ query }) {
-	// fetch returnCode set in the URL parameters.
 	const returnCode = query.get('code');
-	console.log('returnCode ', returnCode);
 
 	const body = {
 		client_id: STRAVA_CLIENT_ID,
@@ -24,8 +22,6 @@ export async function get({ query }) {
 		body: new URLSearchParams(body),
 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	});
-
-	console.log(request);
 
 	const response = await request.json();
 
