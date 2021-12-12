@@ -8,6 +8,6 @@ export async function handle({ request, resolve }) {
 
 export function getSession({ locals }) {
 	return {
-			access_token : locals.access_token
+		access_token: locals.access_token
 	};
 }

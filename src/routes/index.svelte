@@ -1,25 +1,25 @@
 <script context="module">
 	/** @type {import('@sveltejs/kit').Load} */
 	export async function load({ page, fetch, session, stuff }) {
-		if(!session.access_token){
-				return { redirect: "/api/auth/", status: 302 } 
+		if (!session.access_token) {
+			return { redirect: '/api/auth/', status: 302 };
 		}
-		const response = await fetch('/api/activities')
+		const response = await fetch('/api/activities');
 		const activities = await response.json();
 		let totalTime = 0;
 		let totalDistance = 0;
-		for(const activity of activities){
-				const time = activity.elapsed_time;
-				const distance = activity.distance;
-				totalTime += time;
-				totalDistance += distance;
+		for (const activity of activities) {
+			const time = activity.elapsed_time;
+			const distance = activity.distance;
+			totalTime += time;
+			totalDistance += distance;
 		}
-//convert totaltime to hours, minutes, seconds
+		//convert totaltime to hours, minutes, seconds
 
 		let stats = {
-					totalTime: totalTime,
-					totalDistance: totalDistance
-					}
+			totalTime: totalTime,
+			totalDistance: totalDistance
+		};
 
 		return {
 			props: { activities, stats }
@@ -29,11 +29,21 @@
 
 <script>
 	import { page, session } from '$app/stores';
+	import polyline from '@mapbox/polyline';
 	export let activities;
 	export let stats;
-</script> 
+</script>
 
-<h1> Stats </h1>
-<h2> Har trilla {Math.floor(stats.totalTime/3600)} timer og
-{Math.floor((stats.totalTime%3600) / 60)} minutter fordelt på {Math.ceil(stats.totalDistance/1000)} km</h2>
+<h1>Stats</h1>
+<h2>
+	Har trilla {Math.floor(stats.totalTime / 3600)} timer og
+	{Math.floor((stats.totalTime % 3600) / 60)} minutter fordelt på {Math.ceil(
+		stats.totalDistance / 1000
+	)} km
+</h2>
 
+<pre>
+{JSON.stringify(activities[1])}
+{activities[1].map.summary_polyline}
+{polyline.decode(activities[1].map.summary_polyline)}
+</pre>
