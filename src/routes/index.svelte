@@ -28,10 +28,36 @@
 </script>
 
 <script>
-	import { page, session } from '$app/stores';
-	import polyline from '@mapbox/polyline';
 	export let activities;
 	export let stats;
+
+	import { onMount } from 'svelte';
+	import { browser } from '$app/env';
+	onMount(async () => {
+		if (browser) {
+			const leaflet = await import('leaflet');
+			await import('polyline-encoded');
+
+			var map = leaflet.map('map').setView([67.275, 14.44], 13);
+			leaflet
+				.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+					maxZoom: 18
+				})
+				.addTo(map);
+			for (const activity of activities) {
+				var coordinates = leaflet.Polyline.fromEncoded(activity.map.summary_polyline).getLatLngs();
+
+				var polyline = leaflet
+					.polyline(coordinates, {
+						color: 'red',
+						weight: 10,
+						opacity: 0.2,
+						lineJoin: 'round'
+					})
+					.addTo(map);
+			}
+		}
+	});
 </script>
 
 <h1>Stats</h1>
@@ -42,8 +68,11 @@
 	)} km
 </h2>
 
-<pre>
-{JSON.stringify(activities[1])}
-{activities[1].map.summary_polyline}
-{polyline.decode(activities[1].map.summary_polyline)}
-</pre>
+<div id="map" />
+
+<style>
+	#map {
+		height: 500px;
+		width: 100%;
+	}
+</style>

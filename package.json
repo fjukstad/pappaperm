@@ -33,6 +33,8 @@
   "type": "module",
   "dependencies": {
     "@mapbox/polyline": "^1.1.1",
-    "cookie": "^0.4.1"
+    "cookie": "^0.4.1",
+    "leaflet": "^1.7.1",
+    "polyline-encoded": "^0.0.9"
   }
 }
