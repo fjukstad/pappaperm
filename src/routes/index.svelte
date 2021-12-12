@@ -38,7 +38,7 @@
 			const leaflet = await import('leaflet');
 			await import('polyline-encoded');
 
-			var map = leaflet.map('map').setView([67.275, 14.44], 13);
+			var map = leaflet.map('map', { zoomControl: false }).setView([67.275, 14.44], 13);
 			leaflet
 				.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
 					maxZoom: 18
