@@ -50,7 +50,7 @@
 				var polyline = leaflet
 					.polyline(coordinates, {
 						color: 'red',
-						weight: 10,
+						weight: 5,
 						opacity: 0.2,
 						lineJoin: 'round'
 					})
