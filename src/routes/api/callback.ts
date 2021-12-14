@@ -33,8 +33,7 @@ export async function get({ query }) {
 		};
 	}
 
-	// Cookie expires 5 hours from now
-	const expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 5);
+	const expiresAt = new Date(response.expires_at * 1000);
 
 	return {
 		headers: {
