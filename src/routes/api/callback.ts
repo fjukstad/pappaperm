@@ -34,13 +34,16 @@ export async function get({ query }) {
 
 	const expiresAt = new Date(response.expires_at * 1000);
 
+	console.log(response.athlete);
+
 	return {
 		headers: {
 			'set-cookie': [
 				`access_token=${
 					response.access_token
 				}; Path=/; HttpOnly; expires='${expiresAt.toUTCString()}`,
-				`refresh_token=${response.refresh_token}; Path=/; HttpOnly;`
+				`refresh_token=${response.refresh_token}; Path=/; HttpOnly;`,
+				`athlete=${JSON.stringify(response.athlete)}; Path=/; HttpOnly;`
 			],
 			Location: '/'
 		},

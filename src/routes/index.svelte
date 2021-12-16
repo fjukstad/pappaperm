@@ -12,6 +12,7 @@
 
 		const response = await fetch('/api/activities');
 		const activities = await response.json();
+
 		let totalTime = 0;
 		let totalDistance = 0;
 		for (const activity of activities) {
@@ -20,15 +21,16 @@
 			totalTime += time;
 			totalDistance += distance;
 		}
-		//convert totaltime to hours, minutes, seconds
 
 		let stats = {
 			totalTime: totalTime,
 			totalDistance: totalDistance
 		};
 
+		const athlete = session.athlete;
+
 		return {
-			props: { activities, stats }
+			props: { activities, stats, athlete }
 		};
 	}
 </script>
@@ -36,9 +38,11 @@
 <script>
 	export let activities;
 	export let stats;
+	export let athlete;
 
 	import { onMount } from 'svelte';
 	import { browser } from '$app/env';
+	import Layout from './__layout.svelte';
 	onMount(async () => {
 		if (browser) {
 			const leaflet = await import('leaflet');
@@ -66,7 +70,12 @@
 	});
 </script>
 
-<div class="flex w-full justify-center">
+<div class="">
+	<p>
+		Hei {athlete.firstname}!
+	</p>
+</div>
+<div class="flex w-full justify-center mb-5 mt-5">
 	<div class="w-1/2">
 		<table class="table-auto w-full">
 			<tbody class="divide-y divide-gray-300">
