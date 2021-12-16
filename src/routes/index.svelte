@@ -75,7 +75,7 @@
 		Hei {athlete.firstname}!
 	</p>
 </div>
-<div class="flex w-full justify-center mb-5 mt-5">
+<div class="flex w-full justify-center mb-5 mt-2">
 	<div class="w-1/2">
 		<table class="table-auto w-full">
 			<tbody class="divide-y divide-gray-300">
