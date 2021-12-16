@@ -47,7 +47,8 @@ export async function get({ query }) {
 				`access_token=${
 					response.access_token
 				}; Path=/; HttpOnly; expires='${expiresAt.toUTCString()}`,
-				`refresh_token=${response.refresh_token}; Path=/; HttpOnly;`
+				`refresh_token=${response.refresh_token}; Path=/; HttpOnly;`,
+				`athlete=${JSON.stringify(response.athlete)}; Path=/; HttpOnly;`
 			],
 			Location: '/'
 		},
