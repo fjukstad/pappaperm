@@ -1,9 +1,15 @@
 <script context="module">
 	/** @type {import('@sveltejs/kit').Load} */
 	export async function load({ page, fetch, session, stuff }) {
-		if (!session.access_token) {
+		// missing both access and refresh tokens, login and get both
+		if (!session.access_token && !session.refresh_token) {
 			return { redirect: '/api/auth/', status: 302 };
 		}
+		// got refresh token but no access token, get fresh acces token
+		if (!session.access_token && session.refresh_token) {
+			return { redirect: `/api/refresh?code=${session.refresh_token}`, status: 302 };
+		}
+
 		const response = await fetch('/api/activities');
 		const activities = await response.json();
 		let totalTime = 0;

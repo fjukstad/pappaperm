@@ -6,13 +6,20 @@ const STRAVA_SCOPES = import.meta.env.VITE_STRAVA_SCOPES;
  * @type {import('@sveltejs/kit').RequestHandler}
  */
 export async function get({ query }) {
-	const returnCode = query.get('code');
+	const refresh_token = query.get('code');
+	if (!refresh_token) {
+		return {
+			body: JSON.stringify({ error: 'No refresh token found.' }),
+			status: 500
+		};
+	}
+
 	const body = {
 		client_id: STRAVA_CLIENT_ID,
 		client_secret: STRAVA_CLIENT_SECRET,
-		grant_type: 'authorization_code',
+		grant_type: 'refresh_token',
 		redirect_uri: STRAVA_REDIRECT_URI,
-		code: returnCode,
+		refresh_token: refresh_token,
 		scope: STRAVA_SCOPES
 	};
 
