@@ -8,7 +8,7 @@ export async function handle({ request, resolve }) {
 	if (cookies.refresh_token) {
 		request.locals.refresh_token = cookies.refresh_token;
 	}
-	if (cookies.athlete) {
+	if (cookies.athlete && cookies.athlete !== 'undefined') {
 		request.locals.athlete = JSON.parse(cookies.athlete);
 	}
 	return await resolve(request);

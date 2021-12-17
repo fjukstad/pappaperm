@@ -74,7 +74,7 @@
 	});
 </script>
 
-<div class="flex w-full text-right p-2 dark:bg-gray-700">
+<div class="flex w-full text-right p-2 dark:bg-gray-700 bg-gray-100">
 	<div class="w-1">
 		<a href="/">
 			<svg
@@ -94,9 +94,11 @@
 		</a>
 	</div>
 	<div class="grow">
-		<p>
-			Hei {athlete.firstname}!
-		</p>
+		{#if athlete}
+			<p>
+				Hei {athlete.firstname}!
+			</p>
+		{/if}
 	</div>
 </div>
 
