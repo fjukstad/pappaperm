@@ -9,7 +9,12 @@ export async function handle({ request, resolve }) {
 		request.locals.refresh_token = cookies.refresh_token;
 	}
 	if (cookies.athlete && cookies.athlete !== 'undefined') {
-		request.locals.athlete = JSON.parse(cookies.athlete);
+		try {
+			request.locals.athlete = JSON.parse(cookies.athlete);
+		} catch (e) {
+			console.log(e);
+			request.locals.athlete = null;
+		}
 	}
 	return await resolve(request);
 }
