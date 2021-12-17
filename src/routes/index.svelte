@@ -60,7 +60,7 @@
 			const leaflet = await import('leaflet');
 			await import('polyline-encoded');
 
-			var map = leaflet.map('map', { zoomControl: false }).setView([67.275, 14.44], 13);
+			var map = leaflet.map('map', { zoomControl: false }).setView([67.271, 14.44], 13);
 			leaflet
 				.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
 					maxZoom: 18
@@ -116,18 +116,6 @@
 		<table class="table-auto w-full">
 			<tbody class="divide-y divide-gray-300">
 				<tr>
-					<td>Dager i perm</td>
-					<td class="text-right">
-						{daysInLeave}
-					</td>
-				</tr>
-				<tr>
-					<td>Dager igjen</td>
-					<td class="text-right">
-						{daysUntilEndOfLeave}
-					</td>
-				</tr>
-				<tr>
 					<td>Turer</td>
 					<td class="text-right">
 						{activities.length}
@@ -147,6 +135,28 @@
 				<tr>
 					<td> Høydemeter </td>
 					<td class="text-right"> {stats.totalElevation} m</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="w-1/5" />
+</div>
+<div class="flex w-full justify-center mb-5">
+	<div class="w-1/5" />
+	<div class="grow pt-5">
+		<table class="table-auto w-full">
+			<tbody class="divide-y divide-gray-300">
+				<tr>
+					<td>Dager unnagjort</td>
+					<td class="text-right">
+						{daysInLeave}
+					</td>
+				</tr>
+				<tr>
+					<td>Dager igjen</td>
+					<td class="text-right">
+						{daysUntilEndOfLeave}
+					</td>
 				</tr>
 			</tbody>
 		</table>
