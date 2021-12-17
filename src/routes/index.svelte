@@ -44,6 +44,14 @@
 	export let stats;
 	export let athlete;
 
+	export const daysInLeave = Math.ceil(
+		(new Date().getTime() - new Date(2021, 11, 8).getTime()) / (1000 * 60 * 60 * 24)
+	);
+
+	export const daysUntilEndOfLeave = Math.ceil(
+		(new Date(2022, 2, 28).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
+	);
+
 	import { onMount } from 'svelte';
 	import { browser } from '$app/env';
 	import Layout from './__layout.svelte';
@@ -107,6 +115,18 @@
 	<div class="grow pt-5">
 		<table class="table-auto w-full">
 			<tbody class="divide-y divide-gray-300">
+				<tr>
+					<td>Dager i perm</td>
+					<td class="text-right">
+						{daysInLeave}
+					</td>
+				</tr>
+				<tr>
+					<td>Dager igjen</td>
+					<td class="text-right">
+						{daysUntilEndOfLeave}
+					</td>
+				</tr>
 				<tr>
 					<td>Turer</td>
 					<td class="text-right">
