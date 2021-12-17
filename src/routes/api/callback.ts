@@ -34,6 +34,8 @@ export async function get({ query }) {
 
 	const expiresAt = new Date(response.expires_at * 1000);
 
+	console.log(response.athlete);
+
 	return {
 		headers: {
 			'set-cookie': [
