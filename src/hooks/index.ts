@@ -12,8 +12,7 @@ export async function handle({ request, resolve }) {
 		try {
 			request.locals.athlete = JSON.parse(cookies.athlete);
 		} catch (e) {
-			console.log('Could not parse athlete');
-			console.log('Cookies:', cookies.athlete);
+			console.log('Could not parse athlete: `' + cookies.athlete + '`');
 			console.log(e);
 			request.locals.athlete = null;
 		}
