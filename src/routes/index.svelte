@@ -9,6 +9,12 @@
 		if (!session.access_token && session.refresh_token) {
 			return { redirect: `/api/refresh?code=${session.refresh_token}`, status: 302 };
 		}
+		// if athlete is missing we need to re-authorize the app.
+		// Refresh tokens won't do.
+		const athlete = session.athlete;
+		if (!athlete) {
+			return { redirect: '/api/auth/', status: 302 };
+		}
 
 		const response = await fetch('/api/activities');
 		const activities = await response.json();
@@ -30,8 +36,6 @@
 			totalDistance: totalDistance,
 			totalElevation: totalElevation
 		};
-
-		const athlete = session.athlete;
 
 		return {
 			props: { activities, stats, athlete }
