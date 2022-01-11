@@ -72,14 +72,17 @@
 				.addTo(map);
 			for (const activity of activities) {
 				var coordinates = leaflet.Polyline.fromEncoded(activity.map.summary_polyline).getLatLngs();
-
 				var polyline = leaflet
 					.polyline(coordinates, {
 						color: 'red',
 						weight: 5,
 						opacity: 0.2,
 						lineJoin: 'round',
-						interactive: false
+						className: activity.id.toString()
+					})
+					// open activity in new tab on click
+					.on('click', function (e) {
+						window.open('https://strava.com/activities/' + e.target.options.className, '_blank');
 					})
 					.addTo(map);
 			}
