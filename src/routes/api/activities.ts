@@ -14,6 +14,7 @@ export async function get({ params, locals }) {
 		const activity = activities[i];
 		if (activity.type != 'Walk') {
 			activities.splice(i, 1);
+			i--;
 		}
 	}
 
