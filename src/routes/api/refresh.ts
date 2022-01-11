@@ -40,13 +40,16 @@ export async function get({ query }) {
 	}
 
 	const expiresAt = new Date(response.expires_at * 1000);
+	const expiresInThirtyDays = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30);
 	return {
 		headers: {
 			'set-cookie': [
 				`access_token=${
 					response.access_token
 				}; Path=/; HttpOnly; expires='${expiresAt.toUTCString()}`,
-				`refresh_token=${response.refresh_token}; Path=/; HttpOnly;`
+				`refresh_token=${
+					response.refresh_token
+				}; Path=/; HttpOnly;expires='${expiresInThirtyDays.toUTCString()}`
 			],
 			Location: '/'
 		},
