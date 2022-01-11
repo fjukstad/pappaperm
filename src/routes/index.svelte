@@ -78,7 +78,8 @@
 						color: 'red',
 						weight: 5,
 						opacity: 0.2,
-						lineJoin: 'round'
+						lineJoin: 'round',
+						interactive: false
 					})
 					.addTo(map);
 			}
