@@ -21,8 +21,8 @@ export async function handle({ request, resolve }) {
 			lat: 67.271,
 			lng: 14.44,
 			activityType: 'Walk',
-			startDate: '12-08-2021',
-			endDate: '03-28-2022'
+			startDate: '2021-12-08',
+			endDate: '2022-03-28'
 		};
 	}
 
