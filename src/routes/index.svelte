@@ -33,8 +33,6 @@
 
 		let settings = session.settings;
 
-		console.log('settt', session);
-
 		return {
 			props: { activities, stats, settings }
 		};
@@ -46,14 +44,12 @@
 	export let stats;
 	export let settings;
 
-	console.log('settings', settings);
-
 	export const daysInLeave = Math.ceil(
-		(new Date().getTime() - new Date(2021, 11, 8).getTime()) / (1000 * 60 * 60 * 24)
+		(new Date().getTime() - new Date(settings.startDate).getTime()) / (1000 * 60 * 60 * 24)
 	);
 
 	export const daysUntilEndOfLeave = Math.ceil(
-		(new Date(2022, 2, 28).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
+		(new Date(settings.endDate).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
 	);
 
 	import { onMount } from 'svelte';

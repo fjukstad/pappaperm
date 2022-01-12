@@ -20,7 +20,9 @@ export async function handle({ request, resolve }) {
 		request.locals.settings = {
 			lat: 67.271,
 			lng: 14.44,
-			activityType: 'Walk'
+			activityType: 'Walk',
+			startDate: '12-08-2021',
+			endDate: '03-28-2022'
 		};
 	}
 
