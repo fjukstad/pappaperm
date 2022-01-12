@@ -31,8 +31,12 @@
 			totalElevation: totalElevation
 		};
 
+		let settings = session.settings;
+
+		console.log('settt', session);
+
 		return {
-			props: { activities, stats }
+			props: { activities, stats, settings }
 		};
 	}
 </script>
@@ -40,6 +44,9 @@
 <script>
 	export let activities;
 	export let stats;
+	export let settings;
+
+	console.log('settings', settings);
 
 	export const daysInLeave = Math.ceil(
 		(new Date().getTime() - new Date(2021, 11, 8).getTime()) / (1000 * 60 * 60 * 24)
@@ -57,7 +64,9 @@
 			const leaflet = await import('leaflet');
 			await import('polyline-encoded');
 
-			var map = leaflet.map('map', { zoomControl: false }).setView([67.271, 14.44], 13);
+			var map = leaflet
+				.map('map', { zoomControl: false })
+				.setView([settings.lat, settings.lng], 13);
 			leaflet
 				.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
 					maxZoom: 18

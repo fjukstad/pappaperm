@@ -11,6 +11,19 @@ export async function handle({ request, resolve }) {
 	if (cookies.athlete && cookies.athlete !== 'undefined') {
 		request.locals.athlete = JSON.parse(decodeURIComponent(cookies.athlete));
 	}
+	if (cookies.settings) {
+		request.locals.settings = JSON.parse(decodeURIComponent(cookies.settings));
+	}
+	// Missing settings create a default one
+	if (!cookies.settings || cookies.settings == 'undefined') {
+		// lat lng defaults to Bodø, Norway
+		request.locals.settings = {
+			lat: 67.271,
+			lng: 14.44,
+			activityType: 'Walk'
+		};
+	}
+
 	return await resolve(request);
 }
 
@@ -18,6 +31,7 @@ export function getSession({ locals }) {
 	return {
 		access_token: locals.access_token,
 		refresh_token: locals.refresh_token,
-		athlete: locals.athlete
+		athlete: locals.athlete,
+		settings: locals.settings
 	};
 }

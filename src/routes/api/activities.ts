@@ -8,11 +8,13 @@ export async function get({ params, locals }) {
 		}
 	}).then((response) => response.json());
 
+	let activityType = locals.settings.activityType;
+
 	// remove all non walk activities since I use the Walking activity type
 	// for strolling/jogging.
 	for (let i = 0; i < activities.length; i++) {
 		const activity = activities[i];
-		if (activity.type != 'Walk') {
+		if (activity.type != activityType) {
 			activities.splice(i, 1);
 			i--;
 		}
