@@ -28,7 +28,7 @@
 		let stats = {
 			totalTime: totalTime,
 			totalDistance: totalDistance,
-			totalElevation: totalElevation
+			totalElevation: Math.floor(totalElevation)
 		};
 
 		let settings = session.settings;
