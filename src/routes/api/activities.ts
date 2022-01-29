@@ -1,6 +1,6 @@
 export async function get({ params, locals }) {
 	let startDate = new Date(locals.settings.startDate).getTime() / 1000;
-	const url = 'https://www.strava.com/api/v3/athlete/activities?per_page=100&after=' + startDate;
+	const url = 'https://www.strava.com/api/v3/athlete/activities?per_page=200&after=' + startDate;
 	let activities = await fetch(url, {
 		method: 'GET',
 		headers: {
