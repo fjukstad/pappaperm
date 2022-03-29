@@ -48,9 +48,13 @@
 		(new Date().getTime() - new Date(settings.startDate).getTime()) / (1000 * 60 * 60 * 24)
 	);
 
-	export const daysUntilEndOfLeave = Math.ceil(
+	export let daysUntilEndOfLeave = Math.ceil(
 		(new Date(settings.endDate).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
 	);
+
+	if (daysUntilEndOfLeave < 0) {
+		daysUntilEndOfLeave = 0;
+	}
 
 	import { onMount } from 'svelte';
 	import { browser } from '$app/env';
